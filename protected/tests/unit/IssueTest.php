@@ -7,6 +7,22 @@
  */
 class IssueTest extends CDbTestCase
 {
+    public  $fixtures = array(
+        'projects' => 'Project',
+        'issues' =>'Issue',
+    );
+
+    public function testGetStatusText()
+    {
+        echo $this->issues('issueBug')->getStatusText();
+        $this->assertTrue('25%' == $this->issues('issueBug')->getStatusText());
+    }
+
+    public function testGetTypeText()
+    {
+        $this->assertTrue('Bug' == $this->issues('issueBug')->getTypeText());
+    }
+
     public function testGetTypes()
     {
         $option = Issue::model()->typeOptions;
