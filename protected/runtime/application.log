@@ -1,0 +1,86 @@
+2014/07/19 00:42:23 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'trackstar_dev.tb1_project' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `tb1_project`.
+in /Applications/MAMP/htdocs/trackstart/index.php (13)
+2014/07/19 17:30:47 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'trackstar_dev.issue' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `issue`.
+in /Applications/MAMP/htdocs/trackstart/index.php (13)
+2014/07/19 17:31:37 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'trackstar_dev.issue' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `issue`.
+in /Applications/MAMP/htdocs/trackstart/index.php (13)
+2014/07/19 17:32:20 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'trackstar_dev.issue' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `issue`.
+in /Applications/MAMP/htdocs/trackstart/index.php (13)
+2014/07/19 17:32:22 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'trackstar_dev.issue' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `issue`.
+in /Applications/MAMP/htdocs/trackstart/index.php (13)
+2014/07/19 19:27:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested project does not exist.' in /Applications/MAMP/htdocs/trackstart/protected/controllers/IssueController.php:24
+Stack trace:
+#0 /Applications/MAMP/htdocs/trackstart/protected/controllers/IssueController.php(38): IssueController->loadProject(NULL)
+#1 /Applications/MAMP/htdocs/yii/framework/web/filters/CInlineFilter.php(58): IssueController->filterProjectContext(Object(CFilterChain))
+#2 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#3 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /Applications/MAMP/htdocs/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /Applications/MAMP/htdocs/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /Applications/MAMP/htdocs/yii/framework/web/CController.php(291): CFilterChain->run()
+#8 /Applications/MAMP/htdocs/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(282): CController->run('create')
+#10 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('issue/create')
+#11 /Applications/MAMP/htdocs/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /Applications/MAMP/htdocs/trackstart/index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/trackstart/index.php?r=issue/create
+HTTP_REFERER=http://localhost:8888/trackstart/index.php?r=site/login
+---
+2014/07/19 19:29:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested project does not exist.' in /Applications/MAMP/htdocs/trackstart/protected/controllers/IssueController.php:24
+Stack trace:
+#0 /Applications/MAMP/htdocs/trackstart/protected/controllers/IssueController.php(38): IssueController->loadProject(NULL)
+#1 /Applications/MAMP/htdocs/yii/framework/web/filters/CInlineFilter.php(58): IssueController->filterProjectContext(Object(CFilterChain))
+#2 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#3 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /Applications/MAMP/htdocs/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /Applications/MAMP/htdocs/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /Applications/MAMP/htdocs/yii/framework/web/CController.php(291): CFilterChain->run()
+#8 /Applications/MAMP/htdocs/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(282): CController->run('create')
+#10 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('issue/create')
+#11 /Applications/MAMP/htdocs/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /Applications/MAMP/htdocs/trackstart/index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/trackstart/index.php?r=issue/create
+HTTP_REFERER=http://localhost:8888/trackstart/index.php?r=site/login
+---
+2014/07/19 19:29:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested project does not exist.' in /Applications/MAMP/htdocs/trackstart/protected/controllers/IssueController.php:24
+Stack trace:
+#0 /Applications/MAMP/htdocs/trackstart/protected/controllers/IssueController.php(38): IssueController->loadProject('1')
+#1 /Applications/MAMP/htdocs/yii/framework/web/filters/CInlineFilter.php(58): IssueController->filterProjectContext(Object(CFilterChain))
+#2 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#3 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /Applications/MAMP/htdocs/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /Applications/MAMP/htdocs/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /Applications/MAMP/htdocs/yii/framework/web/CController.php(291): CFilterChain->run()
+#8 /Applications/MAMP/htdocs/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(282): CController->run('create')
+#10 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('issue/create')
+#11 /Applications/MAMP/htdocs/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /Applications/MAMP/htdocs/trackstart/index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/trackstart/index.php?r=issue/create&pid=1
+HTTP_REFERER=http://localhost:8888/trackstart/index.php?r=issue/
+---
+2014/07/20 23:53:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested project does not exist.' in /Applications/MAMP/htdocs/trackstart/protected/controllers/IssueController.php:29
+Stack trace:
+#0 /Applications/MAMP/htdocs/trackstart/protected/controllers/IssueController.php(43): IssueController->loadProject(NULL)
+#1 /Applications/MAMP/htdocs/yii/framework/web/filters/CInlineFilter.php(58): IssueController->filterProjectContext(Object(CFilterChain))
+#2 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#3 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /Applications/MAMP/htdocs/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 /Applications/MAMP/htdocs/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 /Applications/MAMP/htdocs/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 /Applications/MAMP/htdocs/yii/framework/web/CController.php(291): CFilterChain->run()
+#8 /Applications/MAMP/htdocs/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(282): CController->run('create')
+#10 /Applications/MAMP/htdocs/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('issue/create')
+#11 /Applications/MAMP/htdocs/yii/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /Applications/MAMP/htdocs/trackstart/index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/trackstart/index.php?r=issue/create
+HTTP_REFERER=http://localhost:8888/trackstart/index.php?r=issue/
+---
