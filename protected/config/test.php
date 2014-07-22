@@ -8,7 +8,7 @@ return CMap::mergeArray(
 				'class'=>'system.test.CDbFixtureManager',
 			),
             'db'=>array(
-                'connectionString' => 'mysql:host=localhost;dbname=trackstar_test',
+                'connectionString' => 'mysql:host=localhost;dbname=trackstar_dev',
                 //'connectionString' => 'mysql:host=localhost;dbname=trackstar_dev',
                 'emulatePrepare' => true,
                 'username' => 'root',

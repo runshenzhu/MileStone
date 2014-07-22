@@ -12,8 +12,71 @@
  * @property string $update_time
  * @property integer $update_user_id
  */
-class Project extends CActiveRecord
+class Project extends TrackStarActiveRecord
 {
+    public static function getUserRoleOptions()
+    {
+        return CHtml::listData(Yii::app()->authManager->getRoles(),'name','name');
+    }
+
+    public function deleteRelatedUser()
+    {
+        $sql = "DELETE FROM tb1_project_user_role WHERE project_id=:projectId";
+        $command = Yii::app()->db->createCommand($sql);
+        $command->bindValue(":projectId", $this->id, PDO::PARAM_INT);
+        $command->execute();
+        $sql = "DELETE FROM tb1_project_user_assignment WHERE project_id=:projectId";
+        $command = Yii::app()->db->createCommand($sql);
+        $command->bindValue(":projectId", $this->id, PDO::PARAM_INT);
+        $command->execute();
+    }
+
+    public function associateUserToProject($user)
+    {
+        $sql="INSERT INTO tb1_project_user_assignment (project_id, user_id) VALUE (:projectId, :userId)";
+        $command = Yii::app()->db->createCommand($sql);
+        $command->bindValue(":projectId", $this->id, PDO::PARAM_INT);
+        $command->bindValue(":userId", $user->id, PDO::PARAM_INT);
+        return $command->execute();
+    }
+
+    public function isUserInProject($user)
+    {
+        $sql="SELECT user_id from tb1_project_user_assignment WHERE project_id=:projectId AND user_id=:userId";
+        $command = Yii::app()->db->createCommand($sql);
+        $command->bindValue(":projectId", $this->id, PDO::PARAM_INT);
+        $command->bindValue(":userId", $user->id, PDO::PARAM_INT);
+        return $command->execute()==1;
+    }
+
+    public function isUserInRole($role)
+    {
+        $sql = "SELECT role from tb1_project_user_role WHERE project_id=:projectId AND user_id=:userId AND role=:role";
+        $command = Yii::app()->db->createCommand($sql);
+        $command->bindValue(":projectId", $this->id, PDO::PARAM_INT);
+        $command->bindValue(":userId", Yii::app()->user->getId(), PDO::PARAM_INT);
+        $command->bindValue(":role", $role, PDO::PARAM_STR);
+        return $command->execute()==1? true: false;
+    }
+    public function associateUserToRole($role, $userId)
+    {
+        $sql = "INSERT INTO tb1_project_user_role (project_id, user_id, role) VALUE (:projectId, :userId, :role)";
+        $command = Yii::app()->db->createCommand($sql);
+        $command->bindValue(":projectId", $this->id, PDO::PARAM_INT);
+        $command->bindValue(":userId", $userId, PDO::PARAM_INT);
+        $command->bindValue(":role", $role, PDO::PARAM_STR);
+        return $command->execute();
+    }
+
+    public function removeUserFromRole($role, $userId)
+    {
+        $sql = "DELETE FROM tb1_project_user_role WHERE project_id=:projectId and user_id=:userId and role=:role";
+        $command = Yii::app()->db->createCommand($sql);
+        $command->bindValue(":projectId", $this->id, PDO::PARAM_INT);
+        $command->bindValue(":userId", $userId, PDO::PARAM_INT);
+        $command->bindValue(":role", $role, PDO::PARAM_STR);
+        return $command->execute();
+    }
     public function getUserOpts()
     {
         //$usersArrary = array();
@@ -36,7 +99,6 @@ class Project extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('create_user_id, update_user_id', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>128),
 			array('description, create_time, update_time', 'safe'),
 			// The following rule is used by search().

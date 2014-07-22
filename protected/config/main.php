@@ -9,6 +9,8 @@ return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'MileStone',
 
+
+
 	// preloading 'log' component
 	'preload'=>array('log'),
 
@@ -67,6 +69,12 @@ return array(
 			// use 'site/error' action to display errors
 			'errorAction'=>'site/error',
 		),
+
+        'authManager'=>array(
+            'class'=>'CDbAuthManager',
+            'connectionID'=>'db',
+        ),
+
 		'log'=>array(
 			'class'=>'CLogRouter',
 			'routes'=>array(

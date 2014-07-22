@@ -10,27 +10,58 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>'List Project', 'url'=>array('index')),
 	array('label'=>'Create Project', 'url'=>array('create')),
-	array('label'=>'Update Project', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete Project', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Project', 'url'=>array('admin')),
-    array('label'=>'Create Issue', 'url'=>array('issue/create','pid'=>$model->id)),
+
+
+	//array('label'=>'Manage Project', 'url'=>array('admin')),
+
+    //array('label'=>'Add User', 'url'=>array('adduser','id'=>$model->id)),
+
 );
+
+if(Yii::app()->user->checkAccess("updateProject", array("project"=>$model)))
+{
+    $this->menu[] = array('label'=>'Update Project', 'url'=>array('update', 'id'=>$model->id));
+}
+
+if(Yii::app()->user->checkAccess("deleteProject", array("project"=>$model)))
+{
+    $this->menu[] = array('label'=>'Delete Project', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?'));
+}
+
+if(Yii::app()->user->checkAccess("createIssue", array("project"=>$model)))
+{
+    $this->menu[] = array('label'=>'Create Issue', 'url'=>array('issue/create','pid'=>$model->id));
+}
+
+if(Yii::app()->user->checkAccess("createUser", array("project"=>$model)))
+{
+    $this->menu[] = array('label'=>'Add User', 'url'=>array('adduser','id'=>$model->id));
+}
+
 ?>
 
 <h1>View Project #<?php echo $model->id; ?></h1>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
+<?php
+$createUserId = $model->create_user_id;
+echo $createUserId;
+$createUser = User::model()->findByPk($createUserId);
+assert($createUser!=null);
+$this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
 		'id',
 		'name',
 		'description',
 		'create_time',
-		'create_user_id',
+		//'create_user_id',
+        array('name'=>'create_user_id', 'value'=>CHtml::encode("fangwei")),
 		'update_time',
 		'update_user_id',
 	),
-)); ?>
+));
+
+?>
 
 <br>
 <h1>Project Issues</h1>
